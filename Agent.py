@@ -63,14 +63,24 @@ class Agent:
             return total_path
 
         def getNeighbours(node):
-            # Only allow four directions of movement
+            # Allow eight directions of movement
             neighbours = [
-                (node[0], node[1] + CELL_SIZE),
-                (node[0], node[1] - CELL_SIZE),
-                (node[0] + CELL_SIZE, node[1]),
-                (node[0] - CELL_SIZE, node[1])
+                (node[0], node[1] + CELL_SIZE), # Up
+                (node[0], node[1] - CELL_SIZE), # Down
+                (node[0] - CELL_SIZE, node[1]), # Left
+                (node[0] + CELL_SIZE, node[1]), # Right
+                #(node[0] - CELL_SIZE, node[1] + CELL_SIZE), # UpLeft
+                #(node[0] + CELL_SIZE, node[1] + CELL_SIZE), # UpRight
+                #(node[0] - CELL_SIZE, node[1] - CELL_SIZE), # DownLeft
+                #(node[0] + CELL_SIZE, node[1] - CELL_SIZE), # DownRight
             ]
-            return neighbours
+
+            validNeighbours = []
+            for n in neighbours:
+                if n not in self.obstacles:
+                    validNeighbours.append(n)
+
+            return validNeighbours
 
         def dist_between(node1, node2):
             xSquared = (node2[0] - node1[0])**2
