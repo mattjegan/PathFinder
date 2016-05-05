@@ -15,12 +15,12 @@ class World(Widget):
         # Generate Obstacles
         self.obstacles = []
         for i in range(NUM_OBSTACLES):
-            self.obstacles.append((randint(0, GRID_WIDTH) * CELL_SIZE, randint(0, GRID_HEIGHT) * CELL_SIZE))
+            self.obstacles.append((randint(0, GRID_WIDTH - 1) * CELL_SIZE, randint(0, GRID_HEIGHT - 1) * CELL_SIZE))
 
         # Generate goal
-        self.goal = (randint(0, GRID_WIDTH) * CELL_SIZE, randint(0, GRID_HEIGHT) * CELL_SIZE)
+        self.goal = (randint(0, GRID_WIDTH - 1) * CELL_SIZE, randint(0, GRID_HEIGHT - 1) * CELL_SIZE)
         while self.goal in self.obstacles:
-            self.goal = (randint(0, GRID_WIDTH) * CELL_SIZE, randint(0, GRID_HEIGHT) * CELL_SIZE)
+            self.goal = (randint(0, GRID_WIDTH - 1) * CELL_SIZE, randint(0, GRID_HEIGHT - 1) * CELL_SIZE)
 
         # Create the agent
         self.agent = Agent(self.canvas, self.goal, self.obstacles)
