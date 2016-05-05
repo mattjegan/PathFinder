@@ -2,7 +2,7 @@
 # Agent.py
 #
 # Original Author: Matthew J Egan
-#          Github: mattjegan/
+#          Github: mattjegan/PathFinder
 #
 # This file contains the Agent that uses an A* search algorithm
 # with a diagonal distance heuristic to find the optimal

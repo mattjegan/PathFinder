@@ -2,7 +2,7 @@
 # PathFinder.py
 #
 # Original Author: Matthew J Egan
-#          Github: mattjegan/
+#          Github: mattjegan/PathFinder
 #
 # This file sets up the Kivy application and instantiates
 # the world that the agent runs in.

@@ -2,7 +2,7 @@
 # World.py
 #
 # Original Author: Matthew J Egan
-#          Github: mattjegan/
+#          Github: mattjegan/PathFinder
 #
 # This file contains a widget that generates the world
 # as well as communicates between the app and the agent

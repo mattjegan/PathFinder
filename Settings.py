@@ -2,7 +2,7 @@
 # Settings.py
 #
 # Original Author: Matthew J Egan
-#          Github: mattjegan/
+#          Github: mattjegan/PathFinder
 #
 # This file contains various values that are used in 
 # the PathFinder Kivy application
