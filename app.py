@@ -13,7 +13,7 @@ Config.set('graphics', 'height', WINDOW_HEIGHT)
 
 from World import World
 
-class MyApp(App):
+class PathFinder(App):
 
     title = 'PathFinder'
 
@@ -24,4 +24,4 @@ class MyApp(App):
         return game
 
 if __name__ == "__main__":
-    MyApp().run()
+    PathFinder().run()

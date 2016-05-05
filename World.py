@@ -39,6 +39,4 @@ class World(Widget):
 
     def update(self, dt):
         with self.canvas:
-            self.canvas.clear()
-            self.draw()
             self.agent.update(dt)

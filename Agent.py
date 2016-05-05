@@ -24,20 +24,27 @@ class Agent:
 
     def draw(self):
         with self.canvas:
+
+            # Draw where the agent has been
             Color(*TRAVELLED_PATH_COLOR)
             for t in self.travelled:
                 Rectangle(pos=t, size=(CELL_SIZE, CELL_SIZE))
 
+            # Draw where the agent is
             Color(*AGENT_COLOR)
             Rectangle(pos=(self.x, self.y), size=(CELL_SIZE, CELL_SIZE))
             self.travelled.append((self.x, self.y))
 
     def update(self, dt):
 
+        # If we haven't drawn the initial position do that now
         if self.calculated == False:
             self.draw()
             self.calculated = True
             return
+
+        # This is be excuted after the initial world has finished
+        # being rendered
         elif self.calculated == True:
             self.aStar()
             self.calculated = -1
@@ -50,6 +57,10 @@ class Agent:
         self.draw()
 
     def aStar(self):
+        # An implementation of the A* search algorithm as
+        # described by wikipedia. We use the diagonal distance
+        # heuristic by default as it is optimal when 8 directions
+        # of movement are available.
         
         def h(node, goal):
             # Manhattan distance
@@ -61,6 +72,7 @@ class Agent:
             return (dx + dy) - min([dx, dy])
 
         def reconstruct_path(cameFrom, node):
+            # Recontructs the path via backtracking through cameFrom
             total_path = [node]
             while node in cameFrom.keys():
                 node = cameFrom[node]
@@ -80,6 +92,7 @@ class Agent:
                 (node[0] + CELL_SIZE, node[1] - CELL_SIZE), # DownRight
             ]
 
+            # Remove an neighbours that are actually obstacles
             validNeighbours = []
             for n in neighbours:
                 if n not in self.obstacles:
@@ -88,6 +101,7 @@ class Agent:
             return validNeighbours
 
         def dist_between(node1, node2):
+            # Returns the distance between two nodes
             xSquared = (node2[0] - node1[0])**2
             ySquared = (node2[1] - node1[1])**2
 
