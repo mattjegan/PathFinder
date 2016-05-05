@@ -53,7 +53,12 @@ class Agent:
         
         def h(node, goal):
             # Manhattan distance
-            return max([node[0] - goal[0], node[1] - goal[1]])
+            dx = abs(node[0] - goal[0])
+            dy = abs(node[1] - goal[1])
+            #return max([dx, dy])
+
+            # Diagonal distance
+            return (dx + dy) - min([dx, dy])
 
         def reconstruct_path(cameFrom, node):
             total_path = [node]
