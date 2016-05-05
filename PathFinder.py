@@ -8,19 +8,14 @@
 # the world that the agent runs in.
 
 from Settings import *
+from World import World
 
 import kivy
-
 from kivy.app import App
-
 from kivy.clock import Clock
-
-
 from kivy.config import Config
 Config.set('graphics', 'width', WINDOW_WIDTH)
 Config.set('graphics', 'height', WINDOW_HEIGHT)
-
-from World import World
 
 class PathFinder(App):
 

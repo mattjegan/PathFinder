@@ -8,13 +8,12 @@
 # as well as communicates between the app and the agent
 
 from Settings import *
+from Agent import Agent
 
 from kivy.uix.widget import Widget
 from kivy.graphics import *
 
 from random import randint
-
-from Agent import Agent
 
 class World(Widget):
 
