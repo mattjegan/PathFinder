@@ -20,4 +20,4 @@ If you would like to contribute to PathFinder please make a pull request.
 
 ## Demo
 Below is a screenshot of PathFinder in action:
-![]({{site.baseurl}}/http://i.imgur.com/DVoBZfC.png)
+![](http://i.imgur.com/DVoBZfC.png)
