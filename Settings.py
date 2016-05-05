@@ -18,3 +18,8 @@ UP_LEFT    = (-1,  1)
 UP_RIGHT   = ( 1,  1)
 DOWN_LEFT  = (-1, -1)
 DOWN_RIGHT = ( 1, -1)
+
+AGENT_COLOR = (0, 1, 0)
+GOAL_COLOR = (1, 0, 0)
+OBSTACLE_COLOR = (.4, 0, .4)
+TRAVELLED_PATH_COLOR = (.6, .6, .6)

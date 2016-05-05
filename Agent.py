@@ -24,11 +24,11 @@ class Agent:
 
     def draw(self):
         with self.canvas:
-            Color(1, 1, 0)
+            Color(*TRAVELLED_PATH_COLOR)
             for t in self.travelled:
                 Rectangle(pos=t, size=(CELL_SIZE, CELL_SIZE))
 
-            Color(1, 1, 1)
+            Color(*AGENT_COLOR)
             Rectangle(pos=(self.x, self.y), size=(CELL_SIZE, CELL_SIZE))
             self.travelled.append((self.x, self.y))
 

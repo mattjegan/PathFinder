@@ -29,12 +29,12 @@ class World(Widget):
         
         with self.canvas:
             # Draw obstactles
-            Color(1, 0, 0)
+            Color(*OBSTACLE_COLOR)
             for ob in self.obstacles:
                 Rectangle(pos=ob, size=(CELL_SIZE, CELL_SIZE))
 
             # Draw goal
-            Color(0, 0, 1)
+            Color(*GOAL_COLOR)
             Rectangle(pos=self.goal, size=(CELL_SIZE, CELL_SIZE))
 
     def update(self, dt):
