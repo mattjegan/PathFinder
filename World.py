@@ -1,3 +1,12 @@
+#
+# World.py
+#
+# Original Author: Matthew J Egan
+#          Github: mattjegan/
+#
+# This file contains a widget that generates the world
+# as well as communicates between the app and the agent
+
 from Settings import *
 
 from kivy.uix.widget import Widget

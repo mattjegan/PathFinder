@@ -1,3 +1,13 @@
+#
+# Agent.py
+#
+# Original Author: Matthew J Egan
+#          Github: mattjegan/
+#
+# This file contains the Agent that uses an A* search algorithm
+# with a diagonal distance heuristic to find the optimal
+# path from its start position to a goal position.
+
 from Settings import *
 
 from kivy.graphics import *
