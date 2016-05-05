@@ -22,4 +22,12 @@ To run PathFinder, simply clone the repository:
 If you would like to contribute to PathFinder please make a pull request.
 
 ## Customization
-To customize PathFinder simple edit values in Settings.py.
+### Permanent Customization
+To customize PathFinder colours and value permanently, simply edit values in Settings.py.
+
+### Temporary Customization
+It is possible to customize PathFinder from the command line. This is primarily for the case when a user wants to run multiple simulations of the PathFinder Agent with different constraints. Due to Kivy already parsing command line arguments we must interact with PathFinder through piped arguments:
+
+	echo '5 2000 300 50' | kivy PathFinder.py
+    
+The string is of the form `CELL_SIZE NUM_OBSTACLES GRID_WIDTH GRID_HEIGHT`
