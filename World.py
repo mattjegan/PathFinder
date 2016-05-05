@@ -1,3 +1,5 @@
+from Settings import *
+
 from kivy.uix.widget import Widget
 from kivy.graphics import *
 
@@ -13,11 +15,11 @@ class World(Widget):
         
         # Generate Obstacles
         self.obstacles = []
-        for i in range(100):
-            self.obstacles.append((randint(1, 500),randint(1, 500)))
+        for i in range(NUM_OBSTACLES):
+            self.obstacles.append((randint(1, GRID_WIDTH) * CELL_SIZE, randint(1, GRID_HEIGHT) * CELL_SIZE))
 
         # Generate goal
-        self.goal = (randint(1, 500),randint(1, 500))
+        self.goal = (randint(1, GRID_WIDTH) * CELL_SIZE, randint(1, GRID_HEIGHT) * CELL_SIZE)
 
     def draw(self):
         
@@ -25,15 +27,11 @@ class World(Widget):
             # Draw obstactles
             Color(1, 0, 0)
             for ob in self.obstacles:
-                Rectangle(pos=ob, size=(5, 5))
+                Rectangle(pos=ob, size=(CELL_SIZE, CELL_SIZE))
 
             # Draw goal
             Color(1, 0, 1)
-            Rectangle(pos=self.goal, size=(5, 5))
-
-            # Draw the agent
-            self.agent.draw()
-
+            Rectangle(pos=self.goal, size=(CELL_SIZE, CELL_SIZE))
 
     def update(self, dt):
         with self.canvas:
