@@ -15,10 +15,12 @@ class Agent:
         self.goal = goal
         self.obstacles = obstacles
 
-        self.path = []
-        self.aStar()
-
         self.travelled = []
+        self.path = []
+
+        self.calculated = False
+
+        self.draw()
 
     def draw(self):
         with self.canvas:
@@ -31,6 +33,15 @@ class Agent:
             self.travelled.append((self.x, self.y))
 
     def update(self, dt):
+
+        if self.calculated == False:
+            self.draw()
+            self.calculated = True
+            return
+        elif self.calculated == True:
+            self.aStar()
+            self.calculated = -1
+
         if len(self.path) != 0:
             nextMove = self.path.pop()
             self.x = nextMove[0]
