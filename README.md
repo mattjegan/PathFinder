@@ -14,3 +14,10 @@ To run PathFinder, simply clone the repository:
 [Install Kivy](https://kivy.org/docs/installation/installation.html), and then run:
 
 	kivy PathFinder.py
+
+## Contribution
+If you would like to contribute to PathFinder please make a pull request.
+
+## Demo
+Below is a screenshot of PathFinder in action:
+![]({{site.baseurl}}/http://i.imgur.com/DVoBZfC.png)
