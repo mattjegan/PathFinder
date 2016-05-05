@@ -8,8 +8,6 @@
 # with a diagonal distance heuristic to find the optimal
 # path from its start position to a goal position.
 
-from Settings import *
-
 from kivy.graphics import *
 
 from random import randint
@@ -17,10 +15,11 @@ from math import sqrt
 
 class Agent:
 
-    def __init__(self, canvas, goal, obstacles):
+    def __init__(self, settings, canvas, goal, obstacles):
+        self.settings = settings
         self.canvas = canvas
-        self.x = randint(0, GRID_WIDTH - 1) * CELL_SIZE
-        self.y = randint(0, GRID_HEIGHT - 1) * CELL_SIZE
+        self.x = randint(0, self.settings.GRID_WIDTH - 1) * self.settings.CELL_SIZE
+        self.y = randint(0, self.settings.GRID_HEIGHT - 1) * self.settings.CELL_SIZE
 
         self.goal = goal
         self.obstacles = obstacles
@@ -36,13 +35,13 @@ class Agent:
         with self.canvas:
 
             # Draw where the agent has been
-            Color(*TRAVELLED_PATH_COLOR)
+            Color(*self.settings.TRAVELLED_PATH_COLOR)
             for t in self.travelled:
-                Rectangle(pos=t, size=(CELL_SIZE, CELL_SIZE))
+                Rectangle(pos=t, size=(self.settings.CELL_SIZE, self.settings.CELL_SIZE))
 
             # Draw where the agent is
-            Color(*AGENT_COLOR)
-            Rectangle(pos=(self.x, self.y), size=(CELL_SIZE, CELL_SIZE))
+            Color(*self.settings.AGENT_COLOR)
+            Rectangle(pos=(self.x, self.y), size=(self.settings.CELL_SIZE, self.settings.CELL_SIZE))
             self.travelled.append((self.x, self.y))
 
     def update(self, dt):
@@ -92,14 +91,14 @@ class Agent:
         def getNeighbours(node):
             # Allow eight directions of movement
             neighbours = [
-                (node[0], node[1] + CELL_SIZE), # Up
-                (node[0], node[1] - CELL_SIZE), # Down
-                (node[0] - CELL_SIZE, node[1]), # Left
-                (node[0] + CELL_SIZE, node[1]), # Right
-                (node[0] - CELL_SIZE, node[1] + CELL_SIZE), # UpLeft
-                (node[0] + CELL_SIZE, node[1] + CELL_SIZE), # UpRight
-                (node[0] - CELL_SIZE, node[1] - CELL_SIZE), # DownLeft
-                (node[0] + CELL_SIZE, node[1] - CELL_SIZE), # DownRight
+                (node[0], node[1] + self.settings.CELL_SIZE), # Up
+                (node[0], node[1] - self.settings.CELL_SIZE), # Down
+                (node[0] - self.settings.CELL_SIZE, node[1]), # Left
+                (node[0] + self.settings.CELL_SIZE, node[1]), # Right
+                (node[0] - self.settings.CELL_SIZE, node[1] + self.settings.CELL_SIZE), # UpLeft
+                (node[0] + self.settings.CELL_SIZE, node[1] + self.settings.CELL_SIZE), # UpRight
+                (node[0] - self.settings.CELL_SIZE, node[1] - self.settings.CELL_SIZE), # DownLeft
+                (node[0] + self.settings.CELL_SIZE, node[1] - self.settings.CELL_SIZE), # DownRight
             ]
 
             # Remove an neighbours that are actually obstacles
@@ -134,7 +133,7 @@ class Agent:
         while len(openSet) != 0:
             current = openSet[0]
             for node in openSet:
-                if fScore.get(node, INFINITY) < fScore.get(current, INFINITY):
+                if fScore.get(node, self.settings.INFINITY) < fScore.get(current, self.settings.INFINITY):
                     current = node
 
             if current == self.goal:
@@ -147,15 +146,15 @@ class Agent:
                 if neighbour in closedSet:
                     continue
 
-                tentative_gScore = gScore.get(current, INFINITY) + dist_between(current, neighbour)
+                tentative_gScore = gScore.get(current, self.settings.INFINITY) + dist_between(current, neighbour)
                 if neighbour not in openSet:
                     openSet.append(neighbour)
-                elif tentative_gScore >= gScore.get(neighbour, INFINITY):
+                elif tentative_gScore >= gScore.get(neighbour, self.settings.INFINITY):
                     continue
 
                 cameFrom[neighbour] = current
                 gScore[neighbour] = tentative_gScore
-                fScore[neighbour] = gScore.get(neighbour, INFINITY) + h(neighbour, self.goal)
+                fScore[neighbour] = gScore.get(neighbour, self.settings.INFINITY) + h(neighbour, self.goal)
 
         print("No path found")
         return
