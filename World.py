@@ -32,7 +32,7 @@ class World(Widget):
                 Rectangle(pos=ob, size=(CELL_SIZE, CELL_SIZE))
 
             # Draw goal
-            Color(1, 0, 1)
+            Color(0, 0, 1)
             Rectangle(pos=self.goal, size=(CELL_SIZE, CELL_SIZE))
 
     def update(self, dt):

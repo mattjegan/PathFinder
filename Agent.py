@@ -69,10 +69,10 @@ class Agent:
                 (node[0], node[1] - CELL_SIZE), # Down
                 (node[0] - CELL_SIZE, node[1]), # Left
                 (node[0] + CELL_SIZE, node[1]), # Right
-                #(node[0] - CELL_SIZE, node[1] + CELL_SIZE), # UpLeft
-                #(node[0] + CELL_SIZE, node[1] + CELL_SIZE), # UpRight
-                #(node[0] - CELL_SIZE, node[1] - CELL_SIZE), # DownLeft
-                #(node[0] + CELL_SIZE, node[1] - CELL_SIZE), # DownRight
+                (node[0] - CELL_SIZE, node[1] + CELL_SIZE), # UpLeft
+                (node[0] + CELL_SIZE, node[1] + CELL_SIZE), # UpRight
+                (node[0] - CELL_SIZE, node[1] - CELL_SIZE), # DownLeft
+                (node[0] + CELL_SIZE, node[1] - CELL_SIZE), # DownRight
             ]
 
             validNeighbours = []
