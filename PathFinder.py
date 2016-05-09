@@ -34,6 +34,7 @@ class PathFinder(App):
                 self.settings.NUM_OBSTACLES = int(cli_settings[1])
                 self.settings.GRID_WIDTH = int(cli_settings[2])
                 self.settings.GRID_HEIGHT = int(cli_settings[3])
+                self.settings.HEURISTIC = str(cli_settings[4])
 
                 self.settings.WINDOW_WIDTH  = str(self.settings.CELL_SIZE * self.settings.GRID_WIDTH)
                 self.settings.WINDOW_HEIGHT = str(self.settings.CELL_SIZE * self.settings.GRID_HEIGHT)

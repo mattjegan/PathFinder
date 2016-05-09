@@ -8,6 +8,9 @@
 # the PathFinder Kivy application
 
 class Settings:
+    # Agent
+    HEURISTIC = 'dd'
+
     # World Geometry
     CELL_SIZE = 5
     NUM_OBSTACLES = 2000

@@ -32,7 +32,7 @@ class World(Widget):
             self.goal = (randint(0, self.settings.GRID_WIDTH - 1) * self.settings.CELL_SIZE, randint(0, self.settings.GRID_HEIGHT - 1) * self.settings.CELL_SIZE)
 
         # Create the agent
-        self.agent = Agent(self.settings, self.canvas, self.goal, self.obstacles)
+        self.agent = Agent(self.settings, self.canvas, self.goal, self.obstacles, self.settings.HEURISTIC)
 
     def draw(self):
         

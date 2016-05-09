@@ -15,7 +15,7 @@ from math import sqrt
 
 class Agent:
 
-    def __init__(self, settings, canvas, goal, obstacles):
+    def __init__(self, settings, canvas, goal, obstacles, heuristic):
         self.settings = settings
         self.canvas = canvas
         self.x = randint(0, self.settings.GRID_WIDTH - 1) * self.settings.CELL_SIZE
@@ -28,6 +28,8 @@ class Agent:
         self.path = []
 
         self.calculated = False
+
+        self.heuristic = heuristic
 
         self.draw()
 
@@ -71,14 +73,23 @@ class Agent:
         # heuristic by default as it is optimal when 8 directions
         # of movement are available.
         
-        def h(node, goal):
+        heuristicMap = {}
+
+        def manhattanDistance(node, goal):
             # Manhattan distance
             dx = abs(node[0] - goal[0])
             dy = abs(node[1] - goal[1])
-            #return max([dx, dy])
+            return max([dx, dy])
 
+        heuristicMap['md'] = manhattanDistance
+
+        def diagonalDistance(node, goal):
             # Diagonal distance
+            dx = abs(node[0] - goal[0])
+            dy = abs(node[1] - goal[1])
             return (dx + dy) - min([dx, dy])
+
+        heuristicMap['dd'] = diagonalDistance
 
         def reconstruct_path(cameFrom, node):
             # Recontructs the path via backtracking through cameFrom
@@ -115,6 +126,8 @@ class Agent:
             ySquared = (node2[1] - node1[1])**2
 
             return sqrt(xSquared + ySquared)
+
+        h = heuristicMap[self.heuristic]
 
         closedSet = []
 
