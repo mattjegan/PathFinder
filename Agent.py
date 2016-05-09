@@ -75,6 +75,14 @@ class Agent:
         
         heuristicMap = {}
 
+        def straightDistance(node, goal):
+            # Straight line distance
+            dx = abs(node[0] - goal[0])
+            dy = abs(node[1] - goal[1])
+            return sqrt(dx*dx + dy*dy)
+
+        heuristicMap['sd'] = straightDistance
+
         def manhattanDistance(node, goal):
             # Manhattan distance
             dx = abs(node[0] - goal[0])
